@@ -6,7 +6,7 @@ from ..items import VnexItem
 class scrape_vnexpress(scrapy.Spider):
 	name = "scrape_vnexpress"
 
-	start_urls=['https://vnexpress.net/tin-tuc/khoa-hoc/trong-nuoc/bo-truong-khoa-hoc-chinh-sach-chuyen-huong-de-khoa-hoc-gan-ket-thi-truong-3833275.html']
+	start_urls=['https://vnexpress.net/']
 	
 	def parse(self, response):
 		# news = {}

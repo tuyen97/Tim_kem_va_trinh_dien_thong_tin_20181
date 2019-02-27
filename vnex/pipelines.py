@@ -7,10 +7,10 @@ class DuplicatesPipeline(object):
         self.ids_seen = set()
 
     def process_item(self, item, spider):
-        if item['title'][0] in self.ids_seen:
+        if item['url'] in self.ids_seen:
             raise DropItem("Duplicate item found: %s" % item)
         else:
-            self.ids_seen.add(item['title'][0])
+            self.ids_seen.add(item['url'])
             return item
 
 class NoneFilterPipeline(object):
@@ -32,6 +32,6 @@ class WriteJsonPipeline(object):
 		self.file.close()
 
 	def process_item(self, item, spider):
-		line = json.dumps(dict(item)) + "\n"
+		line = json.dumps(dict(item),ensure_ascii=False) + "\n"
 		self.file.write(line)
 		return item
